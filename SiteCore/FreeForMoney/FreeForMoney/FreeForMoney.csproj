@@ -286,6 +286,7 @@
     <Content Include="Views\Game\Create.cshtml" />
     <Content Include="Views\Game\Edit.cshtml" />
     <Content Include="Views\Game\Delete.cshtml" />
+    <Content Include="Views\Game\UploadImage.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

@@ -21,7 +21,19 @@ namespace FreeForMoney.Controllers
             var games = gameContext.Games.Include(p => p.Company);
             return View(games.ToList());
         }
-
+        public ActionResult UploadImage(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Game game = gameContext.Games.Find(id);
+            if (game == null)
+            {
+                return HttpNotFound();
+            }
+            return View(game);
+        }
         // GET: Players/Details/5
         public ActionResult Details(int? id)
         {
