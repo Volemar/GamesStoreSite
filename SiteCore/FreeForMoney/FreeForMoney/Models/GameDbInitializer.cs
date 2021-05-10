@@ -10,19 +10,49 @@ namespace FreeForMoney.Models
     {
         protected override void Seed(GameContext db)
         {
-            Game game1 = new Game { Name = "something1", ReleaseDate = 2003, Price = 60, Description = "Big Black ShipPovar" };
-            Game game2 = new Game { Name = "something2", ReleaseDate = 2001, Price = 465, Description = "Big Red ShipPovar" };
-            Game game3 = new Game { Name = "something3", ReleaseDate = 2201, Price = 45, Description = "Big White ShipPovar" };
-            Game game4 = new Game { Name = "something4", ReleaseDate = 2031, Price = 54, Description = "Big Blue ShipPovar" };
+            Game game1 = new Game { 
+                Name = "Fallout 4", 
+                ReleaseDate = 2015, 
+                Price = 40,
+                Genre = "Action RPG",
+                Description = "Game Description"
+            };
+
+            Game game2 = new Game
+            {
+                Name = "Skyrim Special Edition",
+                ReleaseDate = 2016,
+                Price = 60,
+                Genre = "Action RPG",
+                Description = "Game Description"
+            };
+
+            Game game3 = new Game
+            {
+                Name = "Tomb Raider",
+                ReleaseDate = 2014,
+                Price = 40,
+                Genre = "Survival Shooter",
+                Description = "Game Description"
+            };
+
+            Game game4 = new Game
+            {
+                Name = "Wolfenstein The New Order",
+                ReleaseDate = 2016,
+                Price = 30,
+                Genre = "Shooter",
+                Description = "Game Description"
+            };
             db.Games.Add(game1);
             db.Games.Add(game2);
             db.Games.Add(game3);
             db.Games.Add(game4);
-            Company company1 = new Company { Name = "Company", Location = "Your mom", Director = "Me" };
+            Company company1 = new Company { Name = "Bethesda", Location = "Company location text", Director = "Someone" };
             company1.Games.Add(game1);
             company1.Games.Add(game2);
-            Company company2 = new Company { Name = "CompanyButBigger", Location = "Your father", Director = "Me" };
-            company2.Games.Add(game3);
+            company1.Games.Add(game3);
+            Company company2 = new Company { Name = "Naughty Dog", Location = "Company location text", Director = "Someone" };
             company2.Games.Add(game4);
             db.Companies.Add(company1);
             db.Companies.Add(company2);

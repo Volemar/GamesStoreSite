@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    string imageAdress = Model.Id + ".jpg";
 }
 
 <h2>Details</h2>
@@ -11,13 +12,16 @@
     <h4>Game</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
+        <dd>
+            <img style="width : 100px; height : 100px" src="~/images/GamePhotos/@imageAdress" alt="Game Photo @Model.Id" />
+        </dd>
+        @*<dt>
             @Html.DisplayNameFor(model => model.Company.Name)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Company.Name)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.Name)
