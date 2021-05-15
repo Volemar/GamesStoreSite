@@ -16,9 +16,47 @@ namespace FreeForMoney.Controllers
         private PurchaseContext purchaseContext = new PurchaseContext();
 
         // GET: Players
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string searchString)
         {
-            var games = gameContext.Games.Include(p => p.Company);
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.GenreSortParm = sortOrder == "Genre" ? "genre_desc" : "Genre";
+            ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
+            var games = from s in gameContext.Games.Include(p => p.Company)
+                    select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                games = games.Where(s => s.Name.Contains(searchString)
+                                       || s.Genre.Contains(searchString)
+                                       || s.Company.Name.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    games = games.OrderByDescending(s => s.Name);
+                    break;
+                case "Date":
+                    games = games.OrderBy(s => s.ReleaseDate);
+                    break;
+                case "date_desc":
+                    games = games.OrderByDescending(s => s.ReleaseDate);
+                    break;
+                case "Genre":
+                    games = games.OrderBy(s => s.Genre);
+                    break;
+                case "genre_desc":
+                    games = games.OrderByDescending(s => s.Genre);
+                    break;
+                case "Price":
+                    games = games.OrderBy(s => s.Price);
+                    break;
+                case "price_desc":
+                    games = games.OrderByDescending(s => s.Price);
+                    break;
+                default:
+                    games = games.OrderBy(s => s.Name);
+                    break;
+            }
             return View(games.ToList());
         }
         public ActionResult UploadImage(int? id)
