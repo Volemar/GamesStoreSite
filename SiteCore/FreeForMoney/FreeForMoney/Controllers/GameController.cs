@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using FreeForMoney.Models;
+using PagedList;
 
 namespace FreeForMoney.Controllers
 {
@@ -16,19 +17,32 @@ namespace FreeForMoney.Controllers
         private PurchaseContext purchaseContext = new PurchaseContext();
 
         // GET: Players
-        public ActionResult Index(string sortOrder, string searchString)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             ViewBag.GenreSortParm = sortOrder == "Genre" ? "genre_desc" : "Genre";
             ViewBag.PriceSortParm = sortOrder == "Price" ? "price_desc" : "Price";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
             var games = from s in gameContext.Games.Include(p => p.Company)
                     select s;
             if (!String.IsNullOrEmpty(searchString))
             {
                 games = games.Where(s => s.Name.Contains(searchString)
-                                       || s.Genre.Contains(searchString)
-                                       || s.Company.Name.Contains(searchString));
+                                      || s.Genre.Contains(searchString)
+                                      || s.Company.Name.Contains(searchString));
             }
             switch (sortOrder)
             {
@@ -57,7 +71,9 @@ namespace FreeForMoney.Controllers
                     games = games.OrderBy(s => s.Name);
                     break;
             }
-            return View(games.ToList());
+            int pageSize = 3;
+            int pageNumber = (page ?? 1);
+            return View(games.ToPagedList(pageNumber, pageSize));
         }
         public ActionResult UploadImage(int? id)
         {
