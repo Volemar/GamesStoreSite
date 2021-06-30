@@ -1,58 +1,46 @@
-﻿@model FreeForMoney.Models.Game
+﻿<html style="background-color: rgba(34, 30, 31, 0.98); color: white;">
+<body>
+    <div style="text-align:center">
+        @model FreeForMoney.Models.Game
 
-@{
-    ViewBag.Title = "Details";
-    Layout = null;
-    string imageAdress = Model.Id + ".jpg";
-}
+        @{
+            ViewBag.Title = "Details";
+            Layout = null;
+            string imageAdress = Model.Id + ".jpg";
+        }
 
-<h2>Details</h2>
+        <h2>Details</h2>
 
-<div>
-    <h4>Game</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dd>
-            <img style="width : 100px; height : 100px" src="~/images/GamePhotos/@imageAdress" alt="Game Photo @Model.Id" />
-        </dd>
+        <div style="text-align:center">
+            <h4>Game</h4>
+            <hr />
+            <img style="width : 300px; height : 400px" src="~/images/GamePhotos/@imageAdress" alt="Game Photo @Model.Id" />
+            <dl class="dl-horizontal">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ReleaseDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ReleaseDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Price)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("UploadImage", "UploadImage", new { id = Model.Id }) |
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Delete", "Delete", new { id = Model.Id })|
-    @Html.ActionLink("Back to List", "Index")
-</p>
+                <dt style="padding-bottom:2%; font-weight:600;">
+                    @Html.DisplayNameFor(model => model.Name):
+                    @Html.DisplayFor(model => model.Name)
+                </dt>
+                <dt style="padding-bottom:0.5%;">
+                    @Html.DisplayNameFor(model => model.ReleaseDate):
+                    @Html.DisplayFor(model => model.ReleaseDate)
+                </dt>
+                <dt style="padding-bottom:0.5%;">
+                    @Html.DisplayNameFor(model => model.Description):
+                    @Html.DisplayFor(model => model.Description)
+                </dt>
+                <dt style="padding-bottom:0.5%;">
+                    @Html.DisplayNameFor(model => model.Price):
+                    @Html.DisplayFor(model => model.Price)$
+                </dt>
+            </dl>
+        </div>
+        <p>
+            @Html.ActionLink("UploadImage", "UploadImage", new { id = Model.Id }, new { style = "color:white" }) |
+            @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { style = "color:white" }) |
+            @Html.ActionLink("Delete", "Delete", new { id = Model.Id }, new { style = "color:white" })|
+            @Html.ActionLink("Back to List", "Index", null , new { style = "color:white" })
+        </p>
+    </div>
+</body>
+</html>

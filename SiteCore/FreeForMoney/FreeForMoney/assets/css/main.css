@@ -101,13 +101,13 @@ input, select, textarea {
 	body, input, textarea, select {
 		font-family: 'Source Sans Pro';
 		font-weight: 300;
-		color: #5d5d5d;
+		: #5d5d5d;
 		font-size: 14pt;
 		line-height: 1.75em;
 	}
 
 	strong, b {
-		color: #252122;
+		: #252122;
 		font-weight: 400;
 	}
 
@@ -134,7 +134,7 @@ input, select, textarea {
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #252122;
+		color: white;
 		font-weight: 700;
 	}
 
@@ -152,12 +152,12 @@ input, select, textarea {
 	}
 
 	a {
-		color: #d52349;
-		text-decoration: underline;
+		color: white;
+		text-decoration: none;
 	}
 
 		a:hover {
-			text-decoration: none;
+			text-decoration: underline;
 		}
 
 	br.clear {
@@ -1447,21 +1447,24 @@ input, select, textarea {
 		margin: 0 0 0.5em 0;
 	}
 
-	form input[type=text],
-	form input[type=email],
-	form input[type=password],
-	form select,
-	form textarea {
-		-webkit-appearance: none;
-		display: block;
-		border: 0;
-		padding: 0.75em 1em;
-		font-size: 1em;
-		border-radius: 5px;
-		border: solid 1px #dddddd;
-		background: #fff;
-		width: 100%;
-	}
+form input[type=text],
+form input[type=email],
+form input[type=password],
+form select,
+form textarea {
+    -webkit-appearance: none;
+    display: block;
+    border: 0;
+    padding: 0.75em 1em;
+    font-size: 1em;
+    border-radius: 5px;
+    border: solid 1px #dddddd;
+    background: #fff;
+    width: 50%;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
 
 		form input[type=text]:focus,
 		form input[type=email]:focus,
@@ -1569,7 +1572,7 @@ input, select, textarea {
 /* Box */
 
 	.box {
-		background: #ffffff;
+		background: #FFFFFF;
 		border-bottom: solid 1px #ccc;
 		padding: 2.75em 1.75em 2.75em 1.75em;
 	}
@@ -1603,29 +1606,32 @@ input, select, textarea {
 
 /* Button */
 
-	input[type="button"],
-	input[type="submit"],
-	input[type="reset"],
-	button,
-	.button {
-		-webkit-appearance: none;
-		display: inline-block;
-		text-decoration: none;
-		cursor: pointer;
-		border: 0;
-		border-radius: 5px;
-		background: #d52349;
-		color: #fff !important;
-		font-weight: 700;
-		outline: 0;
-		font-size: 1.1em;
-		padding: 0.65em 1.5em 0.65em 1.5em;
-		text-align: center;
-		-moz-transition: background-color .25s ease-in-out;
-		-webkit-transition: background-color .25s ease-in-out;
-		-ms-transition: background-color .25s ease-in-out;
-		transition: background-color .25s ease-in-out;
-	}
+input[type="button"],
+input[type="submit"],
+input[type="reset"],
+button,
+.button {
+    -webkit-appearance: none;
+    width: 40%;
+    text-decoration: none;
+    cursor: pointer;
+    border: 0;
+    padding: 10px;
+    border-radius: 5px;
+    background: #d52349;
+    color: #fff !important;
+    font-weight: 700;
+    outline: 0;
+    font-size: 1.1em;
+    text-align: center;
+    -moz-transition: background-color .25s ease-in-out;
+    -webkit-transition: background-color .25s ease-in-out;
+    -ms-transition: background-color .25s ease-in-out;
+    transition: background-color .25s ease-in-out;
+    position: relative;
+    left: 50%;
+    transform: translate(-50%, 0);
+}
 
 		input[type="button"]:hover,
 		input[type="submit"]:hover,
@@ -1820,7 +1826,7 @@ input, select, textarea {
 		ul.dates li {
 			position: relative;
 			border-top: solid 1px #ddd;
-			padding: 1.3em 0 1.3em 6.75em;
+			padding: 2.3em 0 2.3em 6.75em;
 		}
 
 		ul.dates .date {
@@ -2015,7 +2021,7 @@ input, select, textarea {
 		.icon.featured {
 			position: relative;
 			display: inline-block;
-			background-color: #d52349;
+			-color: #d52349;
 			width: 9em;
 			padding: 1.75em 0 0.75em 0;
 			border-top-left-radius: 5px;
@@ -2066,7 +2072,7 @@ input, select, textarea {
 
 	#header {
 		position: relative;
-		background: #ffffff;
+		background: black;
 		border-bottom: solid 1px #ccc;
 		padding: 5em 0 4em 0;
 		text-align: center;
@@ -2230,29 +2236,7 @@ input, select, textarea {
 			z-index: 1;
 		}
 
-			#intro .middle:before {
-				content: '';
-				width: 32px;
-				height: 100%;
-				position: absolute;
-				left: -24px;
-				top: 0;
-				display: block;
-				z-index: -1;
-				box-shadow: 32px 0 0 0 #fff, 0 -32px 0 0 #fff, 0 32px 0 0 #fff, 32px 32px 0 0 #fff, 32px -32px 0 0 #fff, 0 0 32px 0 rgba(0, 0, 0, 0.15);
-			}
-
-			#intro .middle:after {
-				content: '';
-				width: 32px;
-				height: 100%;
-				position: absolute;
-				right: -24px;
-				top: 0;
-				display: block;
-				z-index: -1;
-				box-shadow: -32px 0 0 0 #fff, 0 -32px 0 0 #fff, 0 32px 0 0 #fff, -32px 32px 0 0 #fff, -32px -32px 0 0 #fff, 0 0 32px 0 rgba(0, 0, 0, 0.15);
-			}
+			
 
 		#intro .button {
 			min-width: 12em;
@@ -2263,12 +2247,29 @@ input, select, textarea {
 		}
 
 /* Main */
+div.scrollup {
+	position: fixed; /* фиксированная позиция */
+	color: #fff; /* цвет текста */
+	background-color: #286090; /* цвет заднего фона */
+	right: 20px; /* расстояние от правого края */
+	bottom: 0px; /* расстояние от нижнего края */
+	padding: 4px 10px; /* отступы до содержимого блока */
+	font-size: 20px; /* размер шрифта (иконки) */
+	border-top-left-radius: 4px; /* скругление верхнего левого угла */
+	border-top-right-radius: 4px; /* скругление верхнего правого угла */
+	cursor: pointer; /* форма курсора */
+	display: none; /* не отображать элемент */
+	text-align: center; /*выравнивание содержимого элемента по центру */
+}
 
-	#main {
-		position: relative;
-		background: #f7f7f7 url("images/bg02.png");
-		padding: 4em 0 4em 0;
+	div.scrollup:hover {
+		background-color: #000; /* цвет заднего фона при наведении */
 	}
+#main {
+    position: relative;
+    background: rgba(34, 30, 31, 0.98);
+    padding: 4em 0 4em 0;
+}
 
 		#main:before {
 			content: '';
@@ -2282,9 +2283,9 @@ input, select, textarea {
 			opacity: 0.1;
 		}
 
-		#main .major h2 {
-			background: #f7f7f7 url("images/bg02.png");
-		}
+        #main .major h2 {
+            background: rgba(34, 30, 31, 0.98);
+        }
 
 /* Footer */
 
@@ -2292,6 +2293,7 @@ input, select, textarea {
 		position: relative;
 		color: #858484;
 		padding: 4em 0;
+		background-color:black;
 	}
 
 		#footer:before {
@@ -2404,6 +2406,8 @@ input, select, textarea {
 
 			#intro {
 				padding: 0;
+                color: white;
+                font-size: 120%;
 			}
 
 				#intro section {

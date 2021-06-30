@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using FreeForMoney.Models;
@@ -106,7 +107,7 @@ namespace FreeForMoney.Controllers
         // GET: Players/Create
         public ActionResult Create()
         {
-            ViewBag.TeamId = new SelectList(gameContext.Companies, "Id", "Name");
+            ViewBag.CompanyId = new SelectList(gameContext.Companies, "Id", "Name");
             return View();
         }
 
@@ -124,7 +125,7 @@ namespace FreeForMoney.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.TeamId = new SelectList(gameContext.Companies, "Id", "Name", game.CompanyId);
+            ViewBag.CompanyId = new SelectList(gameContext.Companies, "Id", "Name", game.CompanyId);
             return View(game);
         }
 
@@ -144,9 +145,7 @@ namespace FreeForMoney.Controllers
             return View(game);
         }
 
-        // POST: Players/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Id,Name,ReleaseDate,Genre,Description,Price,CompanyId")] Game game)
@@ -195,5 +194,53 @@ namespace FreeForMoney.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult SendEmail(int? id)
+        {
+            Game game = gameContext.Games.Find(id);
+            return View(game);
+        }
+        [HttpPost]
+        public ActionResult SendEmail(string receiver, Game game, string message)
+        {
+            try
+            {
+                Game currentGame = gameContext.Games.Find(game.Id);
+                if (ModelState.IsValid)
+                {
+                    var senderEmail = new MailAddress("FreeforMoneyShop@gmail.com", "FreeForMoney");
+                    var receiverEmail = new MailAddress(receiver, "Receiver");
+                    var password = "Freeformoney111";
+                    var sub = "You bought a game!";
+                    var body = "Hey, " + receiverEmail.User + " you just bought a " + currentGame.Name + " from Free For Money site!" +
+                        " you owe us " + currentGame.Price + "$, so please, pay them as soon as possible! Bonus suvenires will be delivered to " + message + ".";
+                    var smtp = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Credentials = new NetworkCredential(senderEmail.Address, password)
+                    };
+                    using (var mess = new MailMessage(senderEmail, receiverEmail)
+                    {
+                        Subject = sub,
+                        Body = body
+                    })
+                    {
+                        smtp.Send(mess);
+                    }
+                    return View();
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.Error = ex.Message;
+            }
+            return View();
+        }
     }
+
+    
 }

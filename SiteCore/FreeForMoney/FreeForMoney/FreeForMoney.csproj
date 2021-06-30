@@ -341,6 +341,7 @@
     <Content Include="Views\Game\Edit.cshtml" />
     <Content Include="Views\Game\Delete.cshtml" />
     <Content Include="Views\Game\UploadImage.cshtml" />
+    <Content Include="Views\Game\SendEmail.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

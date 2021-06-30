@@ -1,0 +1,42 @@
+﻿<html style="background-color: rgba(34, 30, 31, 0.98); color: white;">
+<body>
+    <div style="text-align:center;">
+        @model FreeForMoney.Models.Game
+
+        @{
+            Layout = null;
+        }
+
+        @using (Html.BeginForm("SendEmail", "Game", FormMethod.Post))
+        {
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
+
+        <h2> Checkout </h2>
+            <br />
+            <br />
+            if (ViewBag.Error != null)
+            {
+                <h2> @ViewBag.Error </h2>
+            }
+            <form method="post"
+                  action="SendEmail">
+                <div class="container">
+                    <span class="form-control-static">
+                        Receiver:
+                    </span> <input class="form-control"
+                                   type="text"
+                                   name="receiver" /> <br />
+                    <span class="form-control-static">
+                        Delivery address:
+                    </span> <input class="form-control"
+                                   type="text"
+                                   name="message" /> <br /> <input class="btn btn-primary"
+                                                                   type="submit"
+                                                                   value="Send" />
+                </div>
+            </form>
+        }
+    </div>
+</body>
+</html>

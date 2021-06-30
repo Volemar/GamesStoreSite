@@ -11,11 +11,11 @@ namespace FreeForMoney.Models
         protected override void Seed(GameContext db)
         {
             Game game1 = new Game { 
-                Name = "Fallout 4", 
-                ReleaseDate = 2015, 
+                Name = "Wolfenstein: The New Order", 
+                ReleaseDate = 2014, 
                 Price = 40,
-                Genre = "Action RPG",
-                Description = "Game Description"
+                Genre = "Action",
+                Description = "Wolfenstein®: The New Order reignites the series that created the first-person shooter genre."
             };
 
             Game game2 = new Game
@@ -24,7 +24,7 @@ namespace FreeForMoney.Models
                 ReleaseDate = 2016,
                 Price = 60,
                 Genre = "Action RPG",
-                Description = "Game Description"
+                Description = "Winner of more than 200 Game of the Year Awards, Skyrim Special Edition brings the epic fantasy to life in stunning detail."
             };
 
             Game game3 = new Game
@@ -33,49 +33,49 @@ namespace FreeForMoney.Models
                 ReleaseDate = 2014,
                 Price = 40,
                 Genre = "Survival Shooter",
-                Description = "Game Description"
+                Description = "Tomb Raider explores the intense origin story of Lara Croft and her ascent from a young woman to a hardened survivor."
             };
 
             Game game4 = new Game
             {
-                Name = "Wolfenstein The New Order",
-                ReleaseDate = 2016,
+                Name = "Devil May Cry",
+                ReleaseDate = 2008,
                 Price = 30,
                 Genre = "Shooter",
-                Description = "Game Description"
+                Description = "The ultimate Devil Hunter is back in style, in the game action fans have been waiting for. Play for fun!"
             }; 
             
             Game game5 = new Game
             {
-                Name = "Wolfenstein The New Order",
+                Name = "The Witcher: Wild Hunt ",
                 ReleaseDate = 2016,
-                Price = 30,
+                Price = 60,
                 Genre = "Shooter",
-                Description = "Game Description"
+                Description = "As war rages on throughout the Northern Realms, you take on the greatest contract of your life."
             };
             Game game6 = new Game
             {
-                Name = "Wolfenstein The New Order",
+                Name = "Grand Theft Auto 5",
                 ReleaseDate = 2016,
-                Price = 30,
+                Price = 20,
                 Genre = "Shooter",
-                Description = "Game Description"
+                Description = "Grand Theft Auto V for PC offers players the option to explore the award-winning world of Los Santos and Blaine County."
             };
             Game game7 = new Game
             {
-                Name = "Wolfenstein The New Order",
+                Name = "Assassin`s Creed: Valhalla",
                 ReleaseDate = 2016,
                 Price = 30,
                 Genre = "Shooter",
-                Description = "Game Description"
+                Description = "Assassin's Creed Valhalla is a 2020 action role-playing video game developed by Ubisoft Montreal and published by Ubisoft."
             };
             Game game8 = new Game
             {
-                Name = "Wolfenstein The New Order",
+                Name = "Minecraft",
                 ReleaseDate = 2016,
-                Price = 30,
+                Price = 15,
                 Genre = "Shooter",
-                Description = "Game Description"
+                Description = "Explore new gaming adventures, accessories, & merchandise on the Minecraft Official Site."
             };
             db.Games.Add(game1);
             db.Games.Add(game2);
